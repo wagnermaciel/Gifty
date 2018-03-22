@@ -1,0 +1,19 @@
+{
+  "name": "gifty-express",
+  "version": "1.0.0",
+  "description": "gifty",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "keywords": [
+    "gifty"
+  ],
+  "author": "wlm255",
+  "license": "MIT",
+  "devDependencies": {
+    "express": "^4.16.2",
+    "hbs": "^4.0.1"
+  }
+}
