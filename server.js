@@ -10,12 +10,12 @@ app.get('', (req, res) => {
     res.render('');
 });
 
-app.get('/start/who', (req, res) => {
-    res.render('start/who');
+app.get('/login', (req, res) => {
+    res.render('login');
 });
 
-app.get('/start/age', (req, res) => {
-    res.render('start/age');
+app.get('/signup', (req, res) => {
+    res.render('signup');
 });
 
 const port = process.env.PORT || 3000;

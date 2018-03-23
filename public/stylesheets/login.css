@@ -5,7 +5,7 @@
 body {
     text-align: center;
     background-color: #19647E;
-    background-image: url('../images/background-2.jpg');
+    background-image: url('../images/background-1.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     height: -webkit-fill-available;
@@ -18,7 +18,7 @@ body {
 div {
     background-color: #28AFB0;
     width: fit-content;
-    margin-top: 100px;
+    margin-top: 150px;
     border: 2px dashed white;
     box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2);
     padding: 0 30px 70px 30px;
@@ -42,12 +42,6 @@ div ul {
 div ul li p {
     margin-top: 5px;
 }
-div ul .name-li {
-    display: inline-block;
-}
-div ul #first-name-li {
-    margin-right: 25px;
-}
 
 /* input */
 
@@ -65,7 +59,6 @@ div form input::placeholder {
     color: #9c9c9c;
 }
 div form input:hover {
-    border-shadow: #f0f0f0;
     box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
     background-color: #faffbd;
 }
@@ -76,17 +69,6 @@ div form input:focus {
     border: 1px solid white;
     width: 298px;
     height: 28px;
-}
-
-/* name input */
-
-div form .name-input {
-    width: 130px;
-    display: inline;
-    margin-top: 40px;
-}
-div form .name-input:focus {
-    width: 128px;
 }
 
 /* errors */
@@ -113,11 +95,10 @@ div form #submit-input:hover {
     border: 1px solid white;
 }
 div form #submit-input:focus {
-    background-color: #1b6a86;
     box-shadow: none;
-    border: 1px solid white;
 }
 div form #submit-input:active {
+    background-color: #1e7a9a;
     box-shadow: inset 0 1px 2px rgba(0,0,0,0.3);
 }
 div a {
@@ -136,7 +117,6 @@ div a:hover {
 div a:focus {
     outline: none;
     text-decoration: underline;
-    border: 1px solid #19637d;
 }
 div a:active {
     outline: none;

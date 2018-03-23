@@ -28,6 +28,37 @@ function validate () {
     const confirm_password_input = document.getElementById('confirm-password-input');
     confirm_password_input.addEventListener('blur', checkConfirmPasswordInput.bind(confirm_password_input, password_input));
     confirm_password_input.addEventListener('keypress', hideConfirmPasswordError);
+
+    const submit_input = document.getElementById('submit-input');
+    submit_input.addEventListener('click', checkAllInputs.bind(event));
+}
+
+function checkAllInputs (event) {
+    event.preventDefault();
+    const first_name_input = document.getElementById('first-name-input');
+    const last_name_input = document.getElementById('last-name-input');
+    const username_input = document.getElementById('username-input');
+    const email_address_input = document.getElementById('email-address-input');
+    const password_input = document.getElementById('password-input');
+    const confirm_password_input = document.getElementById('confirm-password-input');
+
+    console.log(confirm_password_input);
+
+    const first_name_error = checkFirstNameInput.call(first_name_input);
+    const last_name_error = checkLastNameInput.call(last_name_input);
+    const username_error = checkUsernameInput.call(username_input);
+    const email_address_error = checkEmailAddressInput.call(email_address_input);
+    const password_error = checkPasswordInput.call(password_input);
+    const confirm_error = checkConfirmPasswordInput.call(confirm_password_input, password_input);
+
+    if (!first_name_error &&
+        !last_name_error &&
+        !username_error &&
+        !email_address_error &&
+        !password_error &&
+        !confirm_error) {
+            window.location.href ="/profile";
+        }
 }
 
 /* input validation */
@@ -53,35 +84,38 @@ function isLetters (string) {
 /* first name input validation */
 
 function checkFirstNameInput () {
-    const name_input_value = this.value;
-    const error = isEmpty(name_input_value) ||
-    isLetters(name_input_value);
+    const value = this.value;
+    const error = isEmpty(value) ||
+    isLetters(value);
     if (error) {
         displayFirstNameError(error);
+        return error;
     }
 }
 
 /* last name input validation */
 
 function checkLastNameInput () {
-    const name_input_value = this.value;
-    const error = isEmpty(name_input_value) ||
-    isLetters(name_input_value);
+    const value = this.value;
+    const error = isEmpty(value) ||
+    isLetters(value);
     if (error) {
         displayLastNameError(error);
+        return error;
     }
 }
 
 /* username input validation */
 
 function checkUsernameInput () {
-    const username_input_value = this.value;
-    const error = isEmpty(username_input_value) ||
-    isValidUsernameLength(username_input_value) ||
-    isLettersAndNumbers(username_input_value) ||
-    isDuplicateUsername(username_input_value);
+    const value = this.value;
+    const error = isEmpty(value) ||
+    isValidUsernameLength(value) ||
+    isLettersAndNumbers(value) ||
+    isDuplicateUsername(value);
     if (error) {
         displayUsernameError(error);
+        return error;
     }
 }
 
@@ -100,11 +134,12 @@ function isDuplicateUsername (string) {
 /* email address input validation */
 
 function checkEmailAddressInput () {
-    const email_address_input_value = this.value;
-    const error = isEmpty(email_address_input_value) ||
-    isValidEmailAddress(email_address_input_value);
+    const value = this.value;
+    const error = isEmpty(value) ||
+    isValidEmailAddress(value);
     if (error) {
         displayEmailAddressError(error);
+        return error;
     }
 }
 
@@ -118,11 +153,12 @@ function isValidEmailAddress(string) {
 /* password input validation */
 
 function checkPasswordInput () {
-    const password_input_value = this.value;
-    const error = isEmpty(password_input_value) ||
-    isValidPasswordLength(password_input_value);
+    const value = this.value;
+    const error = isEmpty(value) ||
+    isValidPasswordLength(value);
     if (error) {
         displayPasswordError(error);
+        return error;
     }
 }
 
@@ -135,13 +171,14 @@ function isValidPasswordLength (string) {
 /* confirm password input validation */
 
 function checkConfirmPasswordInput (password_input) {
-    const confirm_password_input_value = this.value;
-    const password_input_value = password_input.value;
-    console.log(confirm_password_input_value);
-    const error = isEmpty(confirm_password_input_value) ||
-    areMatchingPasswords(confirm_password_input_value, password_input_value);
+    const value = this.value;
+    const password = password_input.value;
+    console.log(value);
+    const error = isEmpty(value) ||
+    areMatchingPasswords(value, password);
     if (error) {
         displayConfirmPasswordError(error);
+        return error;
     }
 }
 
