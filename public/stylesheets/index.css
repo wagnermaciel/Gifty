@@ -1,6 +1,6 @@
 * {
     margin: auto;
-    padding: none;
+    padding: 0;
 }
 body {
     text-align: center;
@@ -16,6 +16,7 @@ div {
     padding-bottom: 70px;
     border: 2px dashed white;
     box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2);
+    padding: 0 30px 100px 30px;
 }
 
 /* title */
@@ -27,6 +28,20 @@ div h1 {
     color: #ffffff;
     padding: 20px;
     border-bottom: 2px dashed white;
+    width: 75%;
+}
+
+div ul {
+    list-style: none;
+}
+div ul li p {
+    margin-top: 5px;
+}
+div ul .name-li {
+    display: inline-block;
+}
+div ul #first-name-li {
+    margin-right: 25px;
 }
 
 /* input */
@@ -38,7 +53,7 @@ div form input {
     padding-left: 10px;
     border: none;
     display: block;
-    margin: 30px;
+    margin-top: 30px;
     color: #505050;
 }
 div form input::placeholder {
@@ -63,11 +78,21 @@ div form input:focus {
 div form .name-input {
     width: 130px;
     display: inline;
-    margin: 40px 10px 0 10px;
+    margin-top: 40px;
 }
 div form .name-input:focus {
     width: 128px;
 }
+
+/* errors */
+
+.error {
+    font-size: 12px;
+    font-family: Avenir;
+    color: #faffbd;
+    position: absolute;
+}
+
 /* submit input */
 
 div form #submit-input {
