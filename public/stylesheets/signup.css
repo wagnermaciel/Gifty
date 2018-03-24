@@ -1,45 +1,57 @@
+/* ------------------------------------------------------------------------------------------------
+    Global
+------------------------------------------------------------------------------------------------ */
+
 * {
     margin: auto;
     padding: 0;
 }
+
+/* ------------------------------------------------------------------------------------------------
+    Body
+------------------------------------------------------------------------------------------------ */
+
 body {
-    text-align: center;
-    background-color: #19647E;
-    background-image: url('../images/background-2.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
+    background: #19647E url('../images/background-2.jpg') 0/cover no-repeat;
     height: -webkit-fill-available;
-    width: -webkit-fill-available;
     overflow: hidden;
+    text-align: center;
+    width: -webkit-fill-available;
 }
 
-/* container */
+/* ------------------------------------------------------------------------------------------------
+    Div
+------------------------------------------------------------------------------------------------ */
 
 div {
     background-color: #28AFB0;
-    width: 315px;
-    margin-top: 100px;
     border: 2px dashed white;
-    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2);
+    box-shadow: outset 0 1px 2px rgba(0,0,0,0.3);
+    margin-top: 100px;
     padding: 0 30px 70px 30px;
+    width: 315px;
 }
 
-/* title */
+/* ------------------------------------------------------------------------------------------------
+    Title
+------------------------------------------------------------------------------------------------ */
 
-div h1 {
-    font-size: 45px;
-    font-family: 'Pacifico', cursive;
-    font-weight: 100;
-    color: #ffffff;
-    padding: 20px;
+#title {
     border-bottom: 2px dashed white;
+    color: #ffffff;
+    font: 100 45px 'Pacifico', cursive;
+    padding: 20px;
     width: 75%;
 }
 
-div ul {
+/* ------------------------------------------------------------------------------------------------
+    Input List
+------------------------------------------------------------------------------------------------ */
+
+ul {
     list-style: none;
 }
-div ul li p {
+ul li p {
     margin-top: 5px;
 }
 div ul .name-li {
@@ -49,95 +61,110 @@ div ul #first-name-li {
     margin-right: 25px;
 }
 
-/* input */
+/* ------------------------------------------------------------------------------------------------
+    Text Inputs
+------------------------------------------------------------------------------------------------ */
 
-div form input {
-    width: 300px;
-    height: 30px;
-    border-radius: 5px;
-    padding-left: 10px;
+.text-input {
     border: none;
-    display: block;
-    margin-top: 30px;
+    border-radius: 5px;
     color: #505050;
+    display: block;
+    height: 30px;
+    margin-top: 30px;
+    padding-left: 10px;
+    width: 300px;
 }
-div form input::placeholder {
+.text-input:focus {
+    background-color: #faffbd;
+    border: 1px solid white;
+    box-shadow: inset 0 1px 1px 1px #d8d8d8;
+    height: 28px;
+    outline: none;
+    width: 298px;
+}
+.text-input:hover {
+    background-color: #faffbd;
+    box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+}
+.text-input::placeholder {
     color: #9c9c9c;
 }
-div form input:hover {
-    box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
-    background-color: #faffbd;
-}
-div form input:focus {
-    background-color: #faffbd;
-    outline: none;
-    box-shadow: inset 0 1px 1px 1px #d8d8d8;
-    border: 1px solid white;
-    width: 298px;
-    height: 28px;
-}
 
-/* name input */
+/* ------------------------------------------------------------------------------------------------
+    Name Inputs
+------------------------------------------------------------------------------------------------ */
 
 div form .name-input {
-    width: 130px;
-    display: inline;
+    display: inline-block;
     margin-top: 40px;
+    width: 130px;
 }
 div form .name-input:focus {
     width: 128px;
 }
 
-/* errors */
+/* ------------------------------------------------------------------------------------------------
+    Errors
+------------------------------------------------------------------------------------------------ */
 
 .error {
-    font-size: 12px;
-    font-family: Avenir;
     color: #faffbd;
+    font: 12px Avenir;
     position: absolute;
 }
 
-/* submit input */
+/* ------------------------------------------------------------------------------------------------
+    Submit Input
+------------------------------------------------------------------------------------------------ */
 
-div form #submit-input {
-    width: 310px;
-    height: 35px;
-    background-color: #19647E;
-    font-size: 15px;
-    color: white;
-    margin-bottom: 0;
-}
-div form #submit-input:hover {
-    background-color: #1b6a86;
-    border: 1px solid white;
-}
-div form #submit-input:focus {
-    background-color: #1b6a86;
-    box-shadow: none;
-    border: 1px solid white;
-}
-div form #submit-input:active {
-    box-shadow: inset 0 1px 2px rgba(0,0,0,0.3);
-    background-color: #1e7a9a;
-}
-div a {
-    text-decoration: none;
-    color: #19637d;
-    font-size: 14px;
-    font-family: Avenir;
-    float: right;
-    margin-top: 10px;
-    margin-right: 2px;
-    padding: 5px;
-}
-div a:hover {
-    text-decoration: underline;
-}
-div a:focus {
-    outline: none;
-    text-decoration: underline;
-}
-div a:active {
-    outline: none;
+#submit-input {
     border: none;
+    border-radius: 5px;
+    background-color: #19647E;
+    color: white;
+    font: 16px Avenir;
+    height: 35px;
+    margin-top: 30px;
+    width: 310px;
+}
+#submit-input:hover {
+    background-color: #1b6a86;
+    border: 1px solid white;
+}
+#submit-input:focus {
+    border: 1px solid white;
+    box-shadow: none;
+    outline: none;
+}
+#submit-input:active {
+    background-color: #1e7a9a;
+    border: 1px solid white;
+    box-shadow: inset 0 1px 2px rgba(0,0,0,0.3);
+    outline: inherit;
+}
+
+/* ------------------------------------------------------------------------------------------------
+    Link
+------------------------------------------------------------------------------------------------ */
+
+a {
+    color: #19637d;
+    float: right;
+    font-family: Avenir;
+    font-size: 14px;
+    margin: 10px 2px 0 0;
+    padding: 5px;
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
+}
+a:focus {
+    outline: none;
+    text-decoration: underline;
+}
+a:active {
+    border: none;
+    outline: none;
 }

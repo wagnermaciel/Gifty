@@ -2,19 +2,19 @@
 <script src="javascripts/login/validator.js"></script>
 
 <div>
-    <h1>Gifty</h1>
+    <h1 id="title">Gifty</h1>
     <form action="/sign-up" method="GET">
         <ul>
             <li id="username-li">
-                <input type="text" placeholder="Username" id="username-input" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+                <input type="text" placeholder="Username" class="text-input" id="username-input" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
                 <p class="error" id="username-error"></p>
             </li>
             <li id="password-li">
-                <input type="password" placeholder="Password" id="password-input" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+                <input type="password" placeholder="Password" class="text-input" id="password-input" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
                 <p class="error" id="password-error"></p>
             </li>
             <li id="submit-li">
-                <input type="submit" id="submit-input" value="Signup">
+                <input type="submit" id="submit-input" value="Login">
             </li>
         </ul>
     </form>
