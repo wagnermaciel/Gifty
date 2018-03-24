@@ -33,16 +33,20 @@ function validate () {
     submit_input.addEventListener('click', checkAllInputs.bind(event));
 }
 
+/* ------------------------------------------------------------------------------------------------
+    Check All Inputs
+------------------------------------------------------------------------------------------------ */
+
 function checkAllInputs (event) {
-    event.preventDefault();
+
+    event.preventDefault(event);
+
     const first_name_input = document.getElementById('first-name-input');
     const last_name_input = document.getElementById('last-name-input');
     const username_input = document.getElementById('username-input');
     const email_address_input = document.getElementById('email-address-input');
     const password_input = document.getElementById('password-input');
     const confirm_password_input = document.getElementById('confirm-password-input');
-
-    console.log(confirm_password_input);
 
     const first_name_error = checkFirstNameInput.call(first_name_input);
     const last_name_error = checkLastNameInput.call(last_name_input);
@@ -58,124 +62,143 @@ function checkAllInputs (event) {
         !password_error &&
         !confirm_error) {
             window.location.href ="/profile";
+            // should send an xml http request to double check that the input is correct on the server-side
         }
 }
 
-/* input validation */
+/* ------------------------------------------------------------------------------------------------
+    Generic Input Validation
+------------------------------------------------------------------------------------------------ */
 
-function isEmpty (string) {
+function checkIfEmpty (string) {
     if (string.length === 0) {
         return "You can't leave this empty.";
     }
 }
 
-function isLettersAndNumbers (string) {
+function checkOnlyLettersAndNumbers (string) {
     if (! /^\w+$/.test(string)) {
         return 'Please use only letters and numbers.';
     }
 }
 
-function isLetters (string) {
+function checkOnlyLetters (string) {
     if (! /^[a-zA-Z]+$/.test(string)) {
         return 'Please use only letters.';
     }
 }
 
-/* first name input validation */
+/* ------------------------------------------------------------------------------------------------
+    First Name Validation
+------------------------------------------------------------------------------------------------ */
 
 function checkFirstNameInput () {
     const value = this.value;
-    const error = isEmpty(value) ||
-    isLetters(value);
+    const error = checkIfEmpty(value) ||
+        checkOnlyLetters(value);
     if (error) {
         displayFirstNameError(error);
         return error;
     }
 }
 
-/* last name input validation */
+/* ------------------------------------------------------------------------------------------------
+    Last Name Validation
+------------------------------------------------------------------------------------------------ */
 
 function checkLastNameInput () {
     const value = this.value;
-    const error = isEmpty(value) ||
-    isLetters(value);
+    const error = checkIfEmpty(value) ||
+        checkOnlyLetters(value);
     if (error) {
         displayLastNameError(error);
         return error;
     }
 }
 
-/* username input validation */
+/* ------------------------------------------------------------------------------------------------
+    Username Validation
+------------------------------------------------------------------------------------------------ */
 
 function checkUsernameInput () {
     const value = this.value;
-    const error = isEmpty(value) ||
-    isValidUsernameLength(value) ||
-    isLettersAndNumbers(value) ||
-    isDuplicateUsername(value);
+    const error = checkIfEmpty(value) ||
+        checkUsernameLength(value) ||
+        checkOnlyLettersAndNumbers(value) ||
+        checkDuplicateUsername(value);
     if (error) {
         displayUsernameError(error);
         return error;
     }
 }
 
-function isValidUsernameLength (string) {
+function checkUsernameLength (string) {
     if (string.length < 5 || string.length > 20) {
         return 'Please use between 5 and 20 characters.';
     }
 }
 
-function isDuplicateUsername (string) {
+function checkDuplicateUsername (string) {
     // should make request to server to check
     // the db
 //     return 'This username is already taken.';
 }
 
-/* email address input validation */
+/* ------------------------------------------------------------------------------------------------
+    Email Address Validation
+------------------------------------------------------------------------------------------------ */
 
 function checkEmailAddressInput () {
     const value = this.value;
-    const error = isEmpty(value) ||
-    isValidEmailAddress(value);
+    const error = checkIfEmpty(value) ||
+        checkValidEmailAddress(value);
     if (error) {
         displayEmailAddressError(error);
         return error;
     }
 }
 
-function isValidEmailAddress(string) {
+function checkValidEmailAddress(string) {
     var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     if (! re.test(String(string).toLowerCase())) {
         return 'Invalid email address.';
     }
 }
 
-/* password input validation */
+function checkDuplicateEmailAddress (string) {
+    // should check if email address exists in db
+    // return 'This email is already in use';
+}
+
+/* ------------------------------------------------------------------------------------------------
+    Password Validation
+------------------------------------------------------------------------------------------------ */
 
 function checkPasswordInput () {
     const value = this.value;
-    const error = isEmpty(value) ||
-    isValidPasswordLength(value);
+    const error = checkIfEmpty(value) ||
+        checkValidPasswordLength(value);
     if (error) {
         displayPasswordError(error);
         return error;
     }
 }
 
-function isValidPasswordLength (string) {
+function checkValidPasswordLength (string) {
     if (string.length < 8 || string.length > 100) {
         return 'Please use between 8 and 100 characters.';
     }
 }
 
-/* confirm password input validation */
+/* ------------------------------------------------------------------------------------------------
+    Confirm Password Validation
+------------------------------------------------------------------------------------------------ */
 
 function checkConfirmPasswordInput (password_input) {
     const value = this.value;
     const password = password_input.value;
-    console.log(value);
-    const error = isEmpty(value) ||
-    areMatchingPasswords(value, password);
+    const error = checkIfEmpty(value) ||
+        areMatchingPasswords(value, password);
     if (error) {
         displayConfirmPasswordError(error);
         return error;
@@ -188,7 +211,9 @@ function areMatchingPasswords (string1, string2) {
     }
 }
 
-/* display error */
+/* ------------------------------------------------------------------------------------------------
+    Display Error
+------------------------------------------------------------------------------------------------ */
 
 function displayError (id, text_content) {
     const error_p = document.getElementById(id);
@@ -213,7 +238,9 @@ function displayConfirmPasswordError (text_content) {
     displayError('confirm-password-error', text_content);
 }
 
-/* hide error */
+/* ------------------------------------------------------------------------------------------------
+    Hide Error
+------------------------------------------------------------------------------------------------ */
 
 function hideError (error_p_id) {
     const error_p = document.getElementById(error_p_id);

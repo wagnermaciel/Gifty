@@ -12,10 +12,12 @@ function validate () {
     submit_input.addEventListener('click', checkAllInputs.bind(event));
 }
 
-/* username and password input validation */
+/* ------------------------------------------------------------------------------------------------
+    Check All Inputs
+------------------------------------------------------------------------------------------------ */
 
 function checkAllInputs () {
-    event.preventDefault();
+    event.preventDefault(event);
     const username_input = document.getElementById('username-input');
     const password_input = document.getElementById('password-input');
     const username_input_value = username_input.value;
@@ -27,62 +29,70 @@ function checkAllInputs () {
     }
 }
 
-/* input validation */
+/* ------------------------------------------------------------------------------------------------
+    Generic Input Validation
+------------------------------------------------------------------------------------------------ */
 
-function isEmpty (string) {
+function checkIfEmpty (string) {
     if (string.length === 0) {
         return "You can't leave this empty";
     }
 }
 
-function isLettersAndNumbers (string) {
+function checkOnlyLettersAndNumbers (string) {
     if (! /^\w+$/.test(string)) {
         return 'Invalid username';
     }
 }
 
-/* username input validation */
+/* ------------------------------------------------------------------------------------------------
+    Username Validation
+------------------------------------------------------------------------------------------------ */
 
 function checkUsernameInput (value) {
-    const error = isEmpty(value) ||
-    isValidUsernameLength(value) ||
-    isLettersAndNumbers(value) ||
-    isExistingUsername(value);
+    const error = checkIfEmpty(value) ||
+        checkUsernameLength(value) ||
+        checkOnlyLettersAndNumbers(value) ||
+        checkDuplicateUsername(value);
     if (error) {
         displayUsernameError(error);
         return true;
     }
 }
 
-function isValidUsernameLength (string) {
+function checkUsernameLength (string) {
     if (string.length < 5 || string.length > 20) {
         return 'Invalid username';
     }
 }
 
-function isExistingUsername (string) {
+function checkDuplicateUsername (string) {
     // should check if username exists in db
-    // return 'This username is not in use';
+    // return 'This username is already in use';
 }
 
-/* password input validation */
+/* ------------------------------------------------------------------------------------------------
+    Password Validation
+------------------------------------------------------------------------------------------------ */
 
 function checkPasswordInput (value) {
-    const error = isEmpty(value) ||
-    isValidPasswordLength(value);
+    const error = checkIfEmpty(value) ||
+        checkPasswordLength(value);
     if (error) {
         displayPasswordError(error);
         return true;
     }
 }
 
-function isValidPasswordLength (string) {
+function checkPasswordLength (string) {
     if (string.length < 8 || string.length > 100) {
         return 'Invalid password';
     }
 }
 
-/* display error */
+/* ------------------------------------------------------------------------------------------------
+    Display Errors
+------------------------------------------------------------------------------------------------ */
 
 function displayError (id, text_content) {
     const error_p = document.getElementById(id);
@@ -95,7 +105,9 @@ function displayPasswordError (text_content) {
     displayError('password-error', text_content);
 }
 
-/* hide error */
+/* ------------------------------------------------------------------------------------------------
+    Hide Errors
+------------------------------------------------------------------------------------------------ */
 
 function hideError (error_p_id) {
     const error_p = document.getElementById(error_p_id);
